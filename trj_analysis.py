@@ -30,7 +30,7 @@ def get_args():
                         '-a',
                         type=parse_tuple_list,
                         required=True,
-                        help='atom pairs, input as list of tuples')
+                        help='atom pairs, input as list of tuples, 1-indexed')
     parser.add_argument('--time_step',
                         '-t',
                         type=float,
