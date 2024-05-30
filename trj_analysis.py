@@ -256,15 +256,16 @@ def make_violin_plots(distances_array, atom_pair_list):
     plt.clf()
 
     plt.violinplot(distances_array.T, showmedians=True)
-    plt.xticks(range(1, len(atom_pair_list) + 1), atom_pair_list, rotation=45, ha='right', fontsize=12)
+    plt.xticks(range(1, len(atom_pair_list) + 1), atom_pair_list, rotation=45, ha='right', fontsize=10)
     plt.xlabel('Atom pair', fontsize=14)
     plt.tick_params(axis='x', labelsize=14)
     plt.ylabel(f'Distance / Å', fontsize=14)
     plt.tick_params(axis='y', labelsize=14)
 
-    plt.axhspan(2.70, 2.76, color='red', alpha=0.1)  # alkyl radical HAT C–C distance range
+    plt.axhspan(3.80, 3.86, color='red', alpha=0.1)  # alkyl radical HAT C–C distance range (2.70-2.76) + C–H bond length (1.1 A) to correct for C–H/C–H clash in MD simulations
     plt.axhspan(3.45, 3.52, color='blue', alpha=0.1)  # alkoxy radical HAT C–C distance range
     plt.axhspan(3.78, 4.33, color='green', alpha=0.1)  # peroxy radical HAT C–C distance range
+    plt.axhspan(5.068, 5.109, color='purple', alpha=0.1)  # bimolecular peroxy decomposition C–C distance range
 
     plt.tight_layout()
     plt.savefig('violin.pdf')
